@@ -25,8 +25,8 @@ public class ServiciosMensaje {
         if (message.getIdMessage() == null) {
             return metodosCrud.save(message);
         } else {
-            Optional<Mensaje> e = metodosCrud.getMessage(message.getIdMessage());
-            if (e.isEmpty()) {
+            Optional<Mensaje> mensaje = metodosCrud.getMessage(message.getIdMessage());
+            if (mensaje.isEmpty()) {
                 return metodosCrud.save(message);
             } else {
                 return message;
@@ -36,13 +36,12 @@ public class ServiciosMensaje {
 
     public Mensaje update(Mensaje message) {
         if (message.getIdMessage() != null) {
-            Optional<Mensaje> e = metodosCrud.getMessage(message.getIdMessage());
-            if (!e.isEmpty()) {
+            Optional<Mensaje> mes = metodosCrud.getMessage(message.getIdMessage());
+            if (!mes.isEmpty()) {
                 if (message.getMessageText() != null) {
-                    e.get().setMessageText(message.getMessageText());
+                    mes.get().setMessageText(message.getMessageText());
                 }
-                metodosCrud.save(e.get());
-                return e.get();
+                return metodosCrud.save(mes.get());
             } else {
                 return message;
             }

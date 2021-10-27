@@ -28,5 +28,4 @@ public class RepositorioDoctor {
     public void delete(Doctor doctor) {
         crud.delete(doctor);
     }
-
 }

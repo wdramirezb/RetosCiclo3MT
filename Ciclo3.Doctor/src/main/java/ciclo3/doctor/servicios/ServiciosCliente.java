@@ -25,8 +25,8 @@ public class ServiciosCliente {
         if (client.getIdClient() == null) {
             return metodosCrud.save(client);
         } else {
-            Optional<Cliente> e = metodosCrud.getCliente(client.getIdClient());
-            if (e.isEmpty()) {
+            Optional<Cliente> cliente = metodosCrud.getCliente(client.getIdClient());
+            if (cliente.isEmpty()) {
                 return metodosCrud.save(client);
             } else {
                 return client;
@@ -36,19 +36,18 @@ public class ServiciosCliente {
 
     public Cliente update(Cliente client) {
         if (client.getIdClient() != null) {
-            Optional<Cliente> e = metodosCrud.getCliente(client.getIdClient());
-            if (!e.isEmpty()) {
+            Optional<Cliente> cli = metodosCrud.getCliente(client.getIdClient());
+            if (!cli.isEmpty()) {
                 if (client.getName() != null) {
-                    e.get().setName(client.getName());
+                    cli.get().setName(client.getName());
                 }
                 if (client.getAge() != null) {
-                    e.get().setAge(client.getAge());
+                    cli.get().setAge(client.getAge());
                 }
                 if (client.getPassword() != null) {
-                    e.get().setPassword(client.getPassword());
+                    cli.get().setPassword(client.getPassword());
                 }
-                metodosCrud.save(e.get());
-                return e.get();
+                return metodosCrud.save(cli.get());
             } else {
                 return client;
             }

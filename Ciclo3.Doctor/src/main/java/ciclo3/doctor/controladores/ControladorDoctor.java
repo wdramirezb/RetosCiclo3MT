@@ -48,6 +48,12 @@ public class ControladorDoctor {
         return servicio.update(doctor);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Doctor update(@PathVariable("id") int doctorId, @RequestBody Doctor doctor) {
+        return servicio.update(doctor);
+    }
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int doctorId) {

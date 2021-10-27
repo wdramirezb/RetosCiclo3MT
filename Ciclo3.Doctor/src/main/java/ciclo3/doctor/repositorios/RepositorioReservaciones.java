@@ -11,22 +11,22 @@ import org.springframework.stereotype.Repository;
 public class RepositorioReservaciones {
 
     @Autowired
-    private InterfaceReservaciones crud4;
+    private InterfaceReservaciones crud;
 
     public List<Reservaciones> getAll() {
-        return (List<Reservaciones>) crud4.findAll();
+        return (List<Reservaciones>) crud.findAll();
     }
 
     public Optional<Reservaciones> getReservation(int id) {
-        return crud4.findById(id);
+        return crud.findById(id);
     }
 
     public Reservaciones save(Reservaciones reservation) {
-        return crud4.save(reservation);
+        return crud.save(reservation);
     }
 
     public void delete(Reservaciones reservation) {
-        crud4.delete(reservation);
+        crud.delete(reservation);
     }
 
 }

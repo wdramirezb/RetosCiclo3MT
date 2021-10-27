@@ -25,8 +25,8 @@ public class RepositorioEspecialidad {
         return crud.save(cspecialidad);
     }
 
-    public void delete(Especialidad cspecialidad) {
-        crud.delete(cspecialidad);
+    public void delete(Especialidad especialidad) {
+        crud.delete(especialidad);
     }
 
 }

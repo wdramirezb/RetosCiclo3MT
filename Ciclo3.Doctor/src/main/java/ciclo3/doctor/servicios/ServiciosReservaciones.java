@@ -7,13 +7,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class ServiciosReservaciones {
+
     @Autowired
     private RepositorioReservaciones metodosCrud;
 
-    public List<Reservaciones> getAll(){
+    public List<Reservaciones> getAll() {
         return metodosCrud.getAll();
     }
 
@@ -21,39 +21,37 @@ public class ServiciosReservaciones {
         return metodosCrud.getReservation(reservationId);
     }
 
-    public Reservaciones save(Reservaciones reservation){
-        if(reservation.getIdReservation()==null){
+    public Reservaciones save(Reservaciones reservation) {
+        if (reservation.getIdReservation() == null) {
             return metodosCrud.save(reservation);
-        }else{
-            Optional<Reservaciones> e= metodosCrud.getReservation(reservation.getIdReservation());
-            if(e.isEmpty()){
+        } else {
+            Optional<Reservaciones> reserva = metodosCrud.getReservation(reservation.getIdReservation());
+            if (reserva.isEmpty()) {
                 return metodosCrud.save(reservation);
-            }else{
+            } else {
                 return reservation;
             }
         }
     }
 
-    public Reservaciones update(Reservaciones reservation){
-        if(reservation.getIdReservation()!=null){
-            Optional<Reservaciones> e= metodosCrud.getReservation(reservation.getIdReservation());
-            if(!e.isEmpty()){
-
-                if(reservation.getStartDate()!=null){
-                    e.get().setStartDate(reservation.getStartDate());
+    public Reservaciones update(Reservaciones reservation) {
+        if (reservation.getIdReservation() != null) {
+            Optional<Reservaciones> res = metodosCrud.getReservation(reservation.getIdReservation());
+            if (!res.isEmpty()) {
+                if (reservation.getStartDate() != null) {
+                    res.get().setStartDate(reservation.getStartDate());
                 }
-                if(reservation.getDevolutionDate()!=null){
-                    e.get().setDevolutionDate(reservation.getDevolutionDate());
+                if (reservation.getDevolutionDate() != null) {
+                    res.get().setDevolutionDate(reservation.getDevolutionDate());
                 }
-                if(reservation.getStatus()!=null){
-                    e.get().setStatus(reservation.getStatus());
+                if (reservation.getStatus() != null) {
+                    res.get().setStatus(reservation.getStatus());
                 }
-                metodosCrud.save(e.get());
-                return e.get();
-            }else{
+                return metodosCrud.save(res.get());
+            } else {
                 return reservation;
             }
-        }else{
+        } else {
             return reservation;
         }
     }
@@ -65,5 +63,5 @@ public class ServiciosReservaciones {
         }).orElse(false);
         return aBoolean;
     }
-    
+
 }

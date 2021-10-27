@@ -48,6 +48,12 @@ public class ControladorCliente {
         return servicio.update(client);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cliente update(@PathVariable("id") int clientId, @RequestBody Cliente client) {
+        return servicio.update(client);
+    }
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int clientId) {

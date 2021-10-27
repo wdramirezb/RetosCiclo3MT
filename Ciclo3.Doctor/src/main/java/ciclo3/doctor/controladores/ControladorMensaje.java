@@ -24,34 +24,40 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControladorMensaje {
 
     @Autowired
-    private ServiciosMensaje servico;
+    private ServiciosMensaje servicio;
 
     @GetMapping("/all")
     public List<Mensaje> getMessages() {
-        return servico.getAll();
+        return servicio.getAll();
     }
 
     @GetMapping("/{id}")
     public Optional<Mensaje> getMessage(@PathVariable("id") int messageId) {
-        return servico.getMessage(messageId);
+        return servicio.getMessage(messageId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Mensaje save(@RequestBody Mensaje message) {
-        return servico.save(message);
+        return servicio.save(message);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Mensaje update(@RequestBody Mensaje message) {
-        return servico.update(message);
+        return servicio.update(message);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Mensaje update(@PathVariable("id") int messageId, @RequestBody Mensaje message) {
+        return servicio.update(message);
+    }
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int messageId) {
-        return servico.deleteMessage(messageId);
+        return servicio.deleteMessage(messageId);
     }
 
 }

@@ -25,8 +25,8 @@ public class ServiciosDoctor {
         if (doctor.getId() == null) {
             return metodosCrud.save(doctor);
         } else {
-            Optional<Doctor> e = metodosCrud.getDoctor(doctor.getId());
-            if (e.isEmpty()) {
+            Optional<Doctor> doc = metodosCrud.getDoctor(doctor.getId());
+            if (doc.isEmpty()) {
                 return metodosCrud.save(doctor);
             } else {
                 return doctor;
@@ -36,25 +36,24 @@ public class ServiciosDoctor {
 
     public Doctor update(Doctor doctor) {
         if (doctor.getId() != null) {
-            Optional<Doctor> e = metodosCrud.getDoctor(doctor.getId());
-            if (!e.isEmpty()) {
+            Optional<Doctor> doc = metodosCrud.getDoctor(doctor.getId());
+            if (!doc.isEmpty()) {
                 if (doctor.getName() != null) {
-                    e.get().setName(doctor.getName());
+                    doc.get().setName(doctor.getName());
                 }
                 if (doctor.getDepartment() != null) {
-                    e.get().setDepartment(doctor.getDepartment());
+                    doc.get().setDepartment(doctor.getDepartment());
                 }
                 if (doctor.getYear() != null) {
-                    e.get().setYear(doctor.getYear());
+                    doc.get().setYear(doctor.getYear());
                 }
                 if (doctor.getDescription() != null) {
-                    e.get().setDescription(doctor.getDescription());
+                    doc.get().setDescription(doctor.getDescription());
                 }
                 if (doctor.getSpecialty() != null) {
-                    e.get().setSpecialty(doctor.getSpecialty());
+                    doc.get().setSpecialty(doctor.getSpecialty());
                 }
-                metodosCrud.save(e.get());
-                return e.get();
+                return metodosCrud.save(doc.get());
             } else {
                 return doctor;
             }

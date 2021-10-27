@@ -1,7 +1,7 @@
 package ciclo3.doctor.controladores;
 
-import ciclo3.doctor.entidades.Especialidad;
-import ciclo3.doctor.servicios.ServiciosEspecialidad;
+import ciclo3.doctor.entidades.Admin;
+import ciclo3.doctor.servicios.ServiciosAdmin;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,45 +19,45 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/Specialty")
+@RequestMapping("/api/Admin")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-public class ControladorEspecialidad {
-
+public class ControladorAdmin {
+    
     @Autowired
-    private ServiciosEspecialidad servicio;
+    private ServiciosAdmin servicio;
 
     @GetMapping("/all")
-    public List<Especialidad> getEspecialidad() {
+    public List<Admin> getAdmins() {
         return servicio.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Especialidad> getEspecialidad(@PathVariable("id") int cspecialidadId) {
-        return servicio.getEspecialidad(cspecialidadId);
+    public Optional<Admin> getAdmin(@PathVariable("id") int adminId) {
+        return servicio.getAdmin(adminId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Especialidad save(@RequestBody Especialidad cspecialidad) {
-        return servicio.save(cspecialidad);
+    public Admin save(@RequestBody Admin admin) {
+        return servicio.save(admin);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Especialidad update(@RequestBody Especialidad cspecialidad) {
-        return servicio.update(cspecialidad);
+    public Admin update(@RequestBody Admin admin) {
+        return servicio.update(admin);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Especialidad update(@PathVariable("id") int cspecialidadId, @RequestBody Especialidad cspecialidad) {
-        return servicio.update(cspecialidad);
+    public Admin update(@PathVariable("id") int adminId, @RequestBody Admin admin) {
+        return servicio.update(admin);
     }
     
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int cspecialidadId) {
-        return servicio.deletecspecialidad(cspecialidadId);
+    public boolean delete(@PathVariable("id") int adminId) {
+        return servicio.deleteAdmin(adminId);
     }
 
 }

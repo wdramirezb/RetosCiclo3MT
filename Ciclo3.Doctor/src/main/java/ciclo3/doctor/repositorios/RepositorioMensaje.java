@@ -11,22 +11,22 @@ import org.springframework.stereotype.Repository;
 public class RepositorioMensaje {
 
     @Autowired
-    private InterfaceMensaje crud3;
+    private InterfaceMensaje crud;
 
     public List<Mensaje> getAll() {
-        return (List<Mensaje>) crud3.findAll();
+        return (List<Mensaje>) crud.findAll();
     }
 
     public Optional<Mensaje> getMessage(int id) {
-        return crud3.findById(id);
+        return crud.findById(id);
     }
 
     public Mensaje save(Mensaje message) {
-        return crud3.save(message);
+        return crud.save(message);
     }
 
     public void delete(Mensaje message) {
-        crud3.delete(message);
+        crud.delete(message);
     }
 
 }
