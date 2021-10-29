@@ -42,14 +42,14 @@ public class Reservaciones implements Serializable {
     /**
      * Campo para la fecha de inicio de la reserva.
      */
-    @Temporal(javax.persistence.TemporalType.DATE)
+    
     @Column(name = "startDate", updatable = true)
     private Date startDate;
     
     /**
      * Campo para la fecha de finalización de la reserva.
      */
-    @Temporal(javax.persistence.TemporalType.DATE)
+    
     @Column(name = "devolutionDate", updatable = true)
     private Date devolutionDate;
     

@@ -1,6 +1,8 @@
 package ciclo3.doctor.controladores;
 
 import ciclo3.doctor.entidades.Reservaciones;
+import ciclo3.doctor.reportes.ContadorClientes;
+import ciclo3.doctor.reportes.StatusReservas;
 import ciclo3.doctor.servicios.ServiciosReservaciones;
 import java.util.List;
 import java.util.Optional;
@@ -53,11 +55,29 @@ public class ControladorReservaciones {
     public Reservaciones update(@PathVariable("id") int reservationId, @RequestBody Reservaciones reservation) {
         return servicio.update(reservation);
     }
-    
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int reservationId) {
         return servicio.deleteReservation(reservationId);
     }
 
+    ///RETO 5
+    //****1a consulta
+    @GetMapping("/report-status")
+    public StatusReservas getReservas() {
+        return servicio.getReporteStatusReservaciones();
+    }
+
+    //****2a consulta
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservaciones> getReservasTiempo(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo) {
+        return servicio.getReporteTiempoReservaciones(dateOne, dateTwo);
+    }
+
+    //****3a consulta
+    @GetMapping("/report-clients")
+    public List<ContadorClientes> getClientes() {
+        return servicio.servicioTopClientes();
+    }
 }
