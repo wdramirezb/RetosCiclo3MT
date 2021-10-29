@@ -97,16 +97,24 @@ public class ServiciosReservaciones {
         return aBoolean;
     }
 
-    ///RETO 5
-    //****1a consulta
+    /**
+     * RETO 5
+     * 1a consulta
+     * @return cuenta de reservas en cada estado
+     */
     public StatusReservas getReporteStatusReservaciones() {
         List<Reservaciones> completed = metodosCrud.ReservacionStatus("completed");
         List<Reservaciones> cancelled = metodosCrud.ReservacionStatus("cancelled");
         return new StatusReservas(completed.size(), cancelled.size());
-
     }
 
-    //****2a consulta
+    /**
+     * RETO 5
+     * 2a consulta
+     * @param dateA --> fecha inicial del rango
+     * @param dateB --> fecha final del rango
+     * @return reserservas en el rango de fechas especificado
+     */
     public List<Reservaciones> getReporteTiempoReservaciones(String dateA, String dateB) {
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
         Date datoUno = new Date();
@@ -125,7 +133,11 @@ public class ServiciosReservaciones {
         }
     }
 
-    //****3a consulta
+    /**
+     * RETO 5
+     * 3a consulta
+     * @return total de reservas por cliente y su detalle
+     */
     public List<ContadorClientes> servicioTopClientes() {
         return metodosCrud.getTopClientes();
     }
