@@ -32,8 +32,8 @@
             <label for="EspecialidadesDescription">Description:</label>
             <input type="text" id="EspecialidadesDescription" placeholder="description"><br>
         </div>
-        <button onclick="guardarInformacionEspecialidad()">Create Specialty</button>
-        <button onclick="extraerInformacionEspecialidades()">View/Edit Specialties</button>
+        <button class="bacciones" onclick="guardarInformacionEspecialidad()">Create Specialty</button>
+        <button class="bacciones" onclick="extraerInformacionEspecialidades()">View/Edit Specialties</button>
         <div id="resultadoEspecialidades"></div>
 
         <!-- Campos para Doctor -->
@@ -51,8 +51,8 @@
             <label for="DoctorSpecialty">Specialty:</label>
             <select id="DoctorSpecialty" style="width: 18.6em"><option disabled selected>select specialty</option></select>
         </div>
-        <button class="btn btn-primary" onclick="guardarInformacionDoctor()">Create Doctor</button>
-        <button class="btn btn-primary" onclick="extraerInformacionDoctores()">View/Edit Doctors</button>
+        <button class="bacciones" onclick="guardarInformacionDoctor()">Create Doctor</button>
+        <button class="bacciones" onclick="extraerInformacionDoctores()">View/Edit Doctors</button>
         <div id="resultadoDoctores"></div>
 
         <!-- Campos para Clientes -->
@@ -68,8 +68,8 @@
             <label for="ClientePassword">Password:</label>
             <input type="password" id="ClientePassword" placeholder="password"><br>
         </div>
-        <button onclick="guardarInformacionCliente()">Create Client</button>
-        <button onclick="extraerInformacionClientes()">View/Edit Clients</button>
+        <button class="bacciones" onclick="guardarInformacionCliente()">Create Client</button>
+        <button class="bacciones" onclick="extraerInformacionClientes()">View/Edit Clients</button>
         <div id="resultadoClientes"></div>
 
         <!-- Campos para Mensajes -->
@@ -82,8 +82,8 @@
             <select id="MensajeCliente" style="width: 18.6em"><option disabled selected>select client</option></select><br>
             <textarea type="text" style="width: 18.6em" id="MensajeMessageText" placeholder="message text"></textarea><br>
         </div>
-        <button onclick="guardarInformacionMensaje()">Save Message</button>
-        <button onclick="extraerInformacionMensajes()">View/Edit Messages</button>
+        <button class="bacciones" onclick="guardarInformacionMensaje()">Save Message</button>
+        <button class="bacciones" onclick="extraerInformacionMensajes()">View/Edit Messages</button>
         <div id="resultadoMensajes"></div>
 
         <!-- Campos para Reservas -->
@@ -99,8 +99,8 @@
             <label for="ReservaDevolutionDate">End Date:</label>
             <input type="date" id="ReservaDevolutionDate" placeholder="devolution date" required><br>
         </div>
-        <button onclick="guardarInformacionReserva()">Create Reservation</button>
-        <button onclick="extraerInformacionReservas()">View/Edit Reservations</button>
+        <button class="bacciones" onclick="guardarInformacionReserva()">Create Reservation</button>
+        <button class="bacciones" onclick="extraerInformacionReservas()">View/Edit Reservations</button>
         <div id="resultadoReservas"></div>
 
         <!-- Campos para Administradores -->
@@ -114,9 +114,31 @@
             <label for="AdministradorPassword">Password:</label>
             <input type="password" id="AdministradorPassword" placeholder="password"><br>
         </div>
-        <button onclick="guardarInformacionAdministrador()">Create Admin User</button>
-        <button onclick="extraerInformacionAdministradores()">View/Edit Admin Users</button>
+        <button class="bacciones" onclick="guardarInformacionAdministrador()">Create Admin User</button>
+        <button class="bacciones" onclick="extraerInformacionAdministradores()">View/Edit Admin Users</button>
         <div id="resultadoAdministradores"></div>
+
+
+        <!-- Bloque de Reportes -->
+        <h2> Generate Reports</h2>
+
+        <!-- Generate Reporte Estado Reservas -->
+        <button class="breportes" onclick="traerReporteStatus()"> Reserves Status Report </button>
+        <div id="resultadoStatus"></div><br>
+
+
+        <!-- Generar Reporte por Fecha -->
+        <button class="breportes" onclick="traerReporteDate()"> Reserves Report by Date (choose dates range) </button><br>
+        <label for="RstarDate">Start Date:</label>
+        <input type="date" id="RstarDate" placeholder="descripcion"><br>
+        <label for="RdevolutionDate">Devolution Date:</label>
+        <input type="date" id="RdevolutionDate" placeholder="descripcion">
+        
+        <div id="resultadoDate"></div><br>
+
+        <!-- Generar Reporte Clientes y Cantidad de reservas por cliente -->
+        <button class="breportes" onclick="traerReporteClientes()"> Top Clients Report </button>
+        <div id="resultadoClientes"></div><br>
 
     </body>
 

@@ -58,3 +58,26 @@ leyend{
     font-size: large;
     font-weight: bold;
 }
+
+.breportes {
+    background-color: #4CAF50;
+    border-collapse: collapse;
+    color: white;
+    padding: 10px 200px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+
+.bacciones {
+    background-color: #3a31af;
+    border-radius: 30%;
+    color: white;
+    padding: 5px 32px;
+    text-align: left;
+    text-decoration: none;
+    
+    font-size: 12px;
+}

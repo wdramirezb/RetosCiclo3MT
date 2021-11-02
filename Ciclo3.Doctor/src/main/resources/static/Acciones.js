@@ -5,34 +5,7 @@ $(document).ready(function(){
     autoInicioClientesMensajes();
     autoInicioClientesReservas();
 });
-/*
-$(document).ready(function(){
-    //instrucciones que se ejecutan cuando carga la página!
-    extraerInformacionEspecialidades()
-    extraerInformacionDoctores()
-    extraerInformacionClientes()
-    extraerInformacionMensajes()
-    extraerInformacionReservas()
-    extraerInformacionAdministradores()
-    });
 
-function pintarRespuestaDoctores(respuestaDoctor) {
-    let tablaDoctores=  `<div class="container"><div class="row">`;
-    for(i=0; i<items.length; i++){
-        tablaDoctores+=
-            <div class="card" style="width: 18rem; ">
-                <div class="card-body">
-                    <h5 class="card-title">${respuestaDoctor[i].department}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">${respuestaDoctor[i].year}</h6>
-                    <p class="card-text">${respuestaDoctor[i].name}</p>
-                    <button class="btn btn-danger" onclick="borrarElemento(${respuestaDoctor[i].id}">Borrar</button>
-                </div>
-            </div>
-    }
-tablaDoctores+= "</div></div>"
-$("#resultado").append(tablaDoctores);
-}
-*/
 /////////////////////BLOQUE ESPECIALIDADES////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -104,8 +77,8 @@ function guardarInformacionEspecialidad() {
             $("#EspecialidadesName").val("");
             $("#EspecialidadesDescription").val("");
             alert("New specialty added");
-            extraerInformacionEspecialidades();
             window.location.reload()
+            extraerInformacionEspecialidades();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             window.location.reload();
@@ -252,19 +225,19 @@ function pintarRespuestaDoctores(respuestaDoctor) {
 
 //Guarda un nuevo doctor en la base de datos
 function guardarInformacionDoctor() {
-let doctor = {
-    name: $("#DoctorName").val(),
-    department: $("#DoctorDepartment").val(),
-    year: $("#DoctorYear").val(),
-    description: $("#DoctorDescription").val(),
-    specialty: {id:+$("#DoctorSpecialty").val()},
-};
-$.ajax({
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "JSON",
-    data: JSON.stringify(doctor),
-    url: "http://129.151.122.81:8080/api/Doctor/save",
+    let doctor = {
+            name: $("#DoctorName").val(),
+            department: $("#DoctorDepartment").val(),
+            year: $("#DoctorYear").val(),
+            description: $("#DoctorDescription").val(),
+            specialty: {id:+$("#DoctorSpecialty").val()},
+        };
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        dataType: "JSON",
+        data: JSON.stringify(doctor),
+        url: "http://129.151.122.81:8080/api/Doctor/save",
         success: function (response) {
             console.log(response);
             console.log("New doctor added");
@@ -276,13 +249,13 @@ $.ajax({
             $("#DoctorDescription").val("");
             $("#DoctorSpecialty").val("");
             alert("New doctor added");
-            extraerInformacionDoctores();
             window.location.reload();
+            extraerInformacionDoctores();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             window.location.reload();
             alert("Error saving. Try again.");
-        },
+            },
     });
 }
 
@@ -432,14 +405,14 @@ function pintarRespuestaClientes(respuestaClientes) {
     $("#resultadoClientes").html(tablaClientes);
 }
 
+////Guardar información de un nuevo cliente
 function guardarInformacionCliente() {
-    let cliente = {
+        let cliente = {
         email: $("#ClienteEmail").val(),
         password: $("#ClientePassword").val(),
         name: $("#ClienteName").val(),
         age: $("#ClienteAge").val(),
     };
-
     $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
@@ -943,3 +916,95 @@ function borrarInformacionAdministrador(idAdmin) {
         },
     });
 }
+
+
+//////////////////////BLOQUE REPORTES/////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+//Reporte de estado de reservas
+function traerReporteStatus(){
+    $.ajax({
+        url:"http://localhost:8080/api/Reservation/report-status",
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+            console.log(respuesta);
+            pintarRespuesta(respuesta);
+        }
+    });
+}
+
+function pintarRespuesta(respuesta){
+
+    let myTable="<table>";
+    myTable+="<tr>";
+       myTable+="<th>completadas</th>";
+        myTable+="<td>"+respuesta.completed+"</td>";
+        myTable+="<th>canceladas</th>";
+        myTable+="<td>"+respuesta.cancelled+"</td>";
+        myTable+="</tr>";
+    myTable+="</table>";
+    $("#resultadoStatus").html(myTable);
+}
+
+//Reporte de reservas entre rango de fechas
+function traerReporteDate(){
+    var fechaInicio = document.getElementById("RstarDate").value;
+    var fechaCierre = document.getElementById("RdevolutionDate").value;
+    console.log(fechaInicio);
+    console.log(fechaCierre);
+    $.ajax({
+        url:"http://localhost:8080/api/Reservation/report-dates/"+fechaInicio+"/"+fechaCierre,
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+            console.log(respuesta);
+            pintarRespuestaDate(respuesta);
+        }
+    });
+}
+
+function pintarRespuestaDate(respuesta){
+    let myTable="<table>";
+    myTable+="<tr>";
+    for(i=0;i<respuesta.length;i++){
+    myTable+="<th>total</th>";
+        myTable+="<td>"+respuesta[i].devolutionDate+"</td>";
+        myTable+="<td>"+respuesta[i].startDate+"</td>";
+        myTable+="<td>"+respuesta[i].status+"</td>";
+        myTable+="</tr>";
+    }
+    myTable+="</table>";
+    $("#resultadoDate").html(myTable);
+}
+
+
+//Reporte de top clientes y número de reservas
+function traerReporteClientes(){
+    $.ajax({
+        url:"http://localhost:8080/api/Reservation/report-clients",
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+            console.log(respuesta);
+            pintarRespuestaClientes(respuesta);
+        }
+    });
+}
+
+function pintarRespuestaClientes(respuesta){
+
+    let myTable="<table>";
+    myTable+="<tr>";
+    for(i=0;i<respuesta.length;i++){
+    myTable+="<th>total</th>";
+        myTable+="<td>"+respuesta[i].total+"</td>";
+        myTable+="<td>"+respuesta[i].client.name+"</td>";
+        myTable+="<td>"+respuesta[i].client.email+"</td>";
+        myTable+="<td>"+respuesta[i].client.age+"</td>";
+        myTable+="</tr>";
+    }
+    myTable+="</table>";
+    $("#resultadoClientes").html(myTable);
+}
+
