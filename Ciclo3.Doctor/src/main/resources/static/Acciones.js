@@ -40,7 +40,7 @@ $("#resultado").append(tablaDoctores);
 function autoInicioEspecialidades() {
     console.log("cargando lista especialidades para doctores")
     $.ajax({
-        url: "http://localhost:8080/api/Specialty/all",
+        url: "http://129.151.122.81:8080/api/Specialty/all",
         type: "GET",
         datatype: "JSON",
         success: function (desplegableEspecialidades) {
@@ -57,7 +57,7 @@ function autoInicioEspecialidades() {
 //Extrae todas las especialidades de la base de datos
 function extraerInformacionEspecialidades() {
     $.ajax({
-        url: "http://localhost:8080/api/Specialty/all",
+        url: "http://129.151.122.81:8080/api/Specialty/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaEspecialidades) {
@@ -95,7 +95,7 @@ function guardarInformacionEspecialidad() {
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
         data: JSON.stringify(especialidad),
-        url: "http://localhost:8080/api/Specialty/save",
+        url: "http://129.151.122.81:8080/api/Specialty/save",
         success: function (response) {
             console.log(response);
             console.log("New specialty added");
@@ -121,7 +121,7 @@ function cargarInformacionEspecialidad(idEspecialidad) {
   };
   let dataToSend = JSON.stringify(myData);
   $.ajax({
-    url: "http://localhost:8080/api/Specialty/" + idEspecialidad,
+    url: "http://129.151.122.81:8080/api/Specialty/" + idEspecialidad,
     type: "GET",
     dataType: "JSON",
     success: function (respuestaEspecialista) {
@@ -142,7 +142,7 @@ function actualizarInformacionEspecialidad(idEspecialidad) {
         description: $("#EspecialidadesDescription").val(),
     };
     $.ajax({
-        url: "http://localhost:8080/api/Specialty/" + idEspecialidad,
+        url: "http://129.151.122.81:8080/api/Specialty/" + idEspecialidad,
         type: "PUT",
         data: dataToSend,
         contentType: "application/JSON",
@@ -165,7 +165,7 @@ function borrarInformacionEspecialidad(idEspecialidad) {
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-        url: "http://localhost:8080/api/Specialty/" + idEspecialidad,
+        url: "http://129.151.122.81:8080/api/Specialty/" + idEspecialidad,
         type: "DELETE",
         data: dataToSend,
         contentType: "application/JSON",
@@ -184,7 +184,7 @@ function borrarInformacionEspecialidad(idEspecialidad) {
 function autoInicioDoctoresMensajes() {
     console.log("cargando lista de doctores para mensajes")
     $.ajax({
-        url: "http://localhost:8080/api/Doctor/all",
+        url: "http://129.151.122.81:8080/api/Doctor/all",
         type: "GET",
         datatype: "JSON",
         success: function (desplegableDoctores) {
@@ -203,7 +203,7 @@ function autoInicioDoctoresMensajes() {
 function autoInicioDoctoresReservas() {
     console.log("cargando lista de doctores para reservas")
     $.ajax({
-        url: "http://localhost:8080/api/Doctor/all",
+        url: "http://129.151.122.81:8080/api/Doctor/all",
         type: "GET",
         datatype: "JSON",
         success: function (desplegableDoctores) {
@@ -220,7 +220,7 @@ function autoInicioDoctoresReservas() {
 //Extrae todos los doctores de la base de datos
 function extraerInformacionDoctores() {
     $.ajax({
-        url: "http://localhost:8080/api/Doctor/all",
+        url: "http://129.151.122.81:8080/api/Doctor/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaDoctor) {
@@ -264,7 +264,7 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     dataType: "JSON",
     data: JSON.stringify(doctor),
-    url: "http://localhost:8080/api/Doctor/save",
+    url: "http://129.151.122.81:8080/api/Doctor/save",
         success: function (response) {
             console.log(response);
             console.log("New doctor added");
@@ -293,7 +293,7 @@ function cargarInformacionDoctor(idDoctor) {
   };
   let dataToSend = JSON.stringify(myData);
   $.ajax({
-    url: "http://localhost:8080/api/Doctor/" + idDoctor,
+    url: "http://129.151.122.81:8080/api/Doctor/" + idDoctor,
     type: "GET",
     dataType: "JSON",
     success: function (respuestaDoctor) {
@@ -321,7 +321,7 @@ function actualizarInformacionDoctor(idDoctor) {
     console.log(doctor);
     let dataToSend = JSON.stringify(doctor);
     $.ajax({
-        url: "http://localhost:8080/api/Doctor/" + idDoctor,
+        url: "http://129.151.122.81:8080/api/Doctor/" + idDoctor,
         type: "PUT",
         data: dataToSend,
         contentType: "application/JSON",
@@ -347,7 +347,7 @@ function borrarInformacionDoctor(idDoctor) {
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-        url: "http://localhost:8080/api/Doctor/" + idDoctor,
+        url: "http://129.151.122.81:8080/api/Doctor/" + idDoctor,
         type: "DELETE",
         data: dataToSend,
         contentType: "application/JSON",
@@ -368,7 +368,7 @@ function borrarInformacionDoctor(idDoctor) {
 function autoInicioClientesMensajes() {
     console.log("cargando lista clientes para mensajes")
     $.ajax({
-        url: "http://localhost:8080/api/Client/all",
+        url: "http://129.151.122.81:8080/api/Client/all",
         type: "GET",
         datatype: "JSON",
         success: function (desplegableClientes) {
@@ -386,7 +386,7 @@ function autoInicioClientesMensajes() {
 function autoInicioClientesReservas() {
     console.log("cargando lista clientes para reservas")
     $.ajax({
-        url: "http://localhost:8080/api/Client/all",
+        url: "http://129.151.122.81:8080/api/Client/all",
         type: "GET",
         datatype: "JSON",
         success: function (desplegableClientes) {
@@ -403,7 +403,7 @@ function autoInicioClientesReservas() {
 //Extrae todos los clientes de la base de datos
 function extraerInformacionClientes() {
     $.ajax({
-        url: "http://localhost:8080/api/Client/all",
+        url: "http://129.151.122.81:8080/api/Client/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaClientes) {
@@ -445,7 +445,7 @@ function guardarInformacionCliente() {
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
         data: JSON.stringify(cliente),
-        url: "http://localhost:8080/api/Client/save",
+        url: "http://129.151.122.81:8080/api/Client/save",
         success: function (response) {
             console.log(response);
             console.log("New client added");
@@ -473,7 +473,7 @@ function cargarInformacionCliente(idClient) {
   };
   let dataToSend = JSON.stringify(myData);
   $.ajax({
-    url: "http://localhost:8080/api/Client/" + idClient,
+    url: "http://129.151.122.81:8080/api/Client/" + idClient,
     type: "GET",
     dataType: "JSON",
     success: function (respuestaCliente) {
@@ -498,7 +498,7 @@ function actualizarInformacionCliente(idClient) {
     console.log(cliente);
     let dataToSend = JSON.stringify(cliente);
     $.ajax({
-        url: "http://localhost:8080/api/Client/" + idClient,
+        url: "http://129.151.122.81:8080/api/Client/" + idClient,
         type: "PUT",
         data: dataToSend,
         contentType: "application/JSON",
@@ -523,7 +523,7 @@ function borrarInformacionCliente(idClient) {
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-        url: "http://localhost:8080/api/Client/" + idClient,
+        url: "http://129.151.122.81:8080/api/Client/" + idClient,
         type: "DELETE",
         data: dataToSend,
         contentType: "application/JSON",
@@ -543,7 +543,7 @@ function borrarInformacionCliente(idClient) {
 //Extrae todos los mensajes de la base de datos
 function extraerInformacionMensajes() {
     $.ajax({
-        url: "http://localhost:8080/api/Message/all",
+        url: "http://129.151.122.81:8080/api/Message/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaMensajes) {
@@ -584,7 +584,7 @@ function guardarInformacionMensaje() {
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
         data: JSON.stringify(mensaje),
-        url: "http://localhost:8080/api/Message/save",
+        url: "http://129.151.122.81:8080/api/Message/save",
         success: function (response) {
             console.log(response);
             console.log("New message added");
@@ -611,7 +611,7 @@ function cargarInformacionMensaje(idMessage) {
   };
   let dataToSend = JSON.stringify(myData);
   $.ajax({
-    url: "http://localhost:8080/api/Message/" + idMessage,
+    url: "http://129.151.122.81:8080/api/Message/" + idMessage,
     type: "GET",
     dataType: "JSON",
     success: function (respuestaMensaje) {
@@ -633,7 +633,7 @@ function actualizarInformacionMensaje(idMessage) {
     console.log(mensaje);
     let dataToSend = JSON.stringify(mensaje);
     $.ajax({
-        url: "http://localhost:8080/api/Message/" + idMessage,
+        url: "http://129.151.122.81:8080/api/Message/" + idMessage,
         type: "PUT",
         data: dataToSend,
         contentType: "application/JSON",
@@ -655,7 +655,7 @@ function borrarInformacionMensaje(idMessage) {
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-        url: "http://localhost:8080/api/Message/" + idMessage,
+        url: "http://129.151.122.81:8080/api/Message/" + idMessage,
         type: "DELETE",
         data: dataToSend,
         contentType: "application/JSON",
@@ -675,7 +675,7 @@ function borrarInformacionMensaje(idMessage) {
 //Extrae todas las reservas de la base de datos
 function extraerInformacionReservas() {
     $.ajax({
-        url: "http://localhost:8080/api/Reservation/all",
+        url: "http://129.151.122.81:8080/api/Reservation/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaReservas) {
@@ -720,7 +720,7 @@ function guardarInformacionReserva() {
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
         data: JSON.stringify(reserva),
-        url: "http://localhost:8080/api/Reservation/save",
+        url: "http://129.151.122.81:8080/api/Reservation/save",
         success: function (response) {
             console.log(response);
             console.log("New reservation added");
@@ -747,7 +747,7 @@ function cargarInformacionReserva(idReservation) {
   };
   let dataToSend = JSON.stringify(myData);
   $.ajax({
-    url: "http://localhost:8080/api/Reservation/" + idReservation,
+    url: "http://129.151.122.81:8080/api/Reservation/" + idReservation,
     type: "GET",
     dataType: "JSON",
     success: function (respuestaReserva) {
@@ -772,7 +772,7 @@ function actualizarInformacionReserva(idReservation) {
     console.log(reserva);
     let dataToSend = JSON.stringify(reserva);
     $.ajax({
-        url: "http://localhost:8080/api/Reservation/" + idReservation,
+        url: "http://129.151.122.81:8080/api/Reservation/" + idReservation,
         type: "PUT",
         data: dataToSend,
         contentType: "application/JSON",
@@ -797,7 +797,7 @@ function borrarInformacionReserva(idReservation) {
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-        url: "http://localhost:8080/api/Reservation/" + idReservation,
+        url: "http://129.151.122.81:8080/api/Reservation/" + idReservation,
         type: "DELETE",
         data: dataToSend,
         contentType: "application/JSON",
@@ -817,7 +817,7 @@ function borrarInformacionReserva(idReservation) {
 //Extrae todos los administradores de la base de datos
 function extraerInformacionAdministradores() {
     $.ajax({
-        url: "http://localhost:8080/api/Admin/all",
+        url: "http://129.151.122.81:8080/api/Admin/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuestaAdministradores) {
@@ -856,7 +856,7 @@ function guardarInformacionAdministrador() {
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
         data: JSON.stringify(administrador),
-        url: "http://localhost:8080/api/Admin/save",
+        url: "http://129.151.122.81:8080/api/Admin/save",
         success: function (response) {
             console.log(response);
             console.log("New administrator added");
@@ -883,7 +883,7 @@ function cargarInformacionAdministrador(idAdmin) {
   };
   let dataToSend = JSON.stringify(myData);
   $.ajax({
-    url: "http://localhost:8080/api/Admin/" + idAdmin,
+    url: "http://129.151.122.81:8080/api/Admin/" + idAdmin,
     type: "GET",
     dataType: "JSON",
     success: function (respuestaAdministrador) {
@@ -907,7 +907,7 @@ function actualizarInformacionAdministrador(idAdmin) {
     console.log(administrador);
     let dataToSend = JSON.stringify(administrador);
     $.ajax({
-        url: "http://localhost:8080/api/Admin/" + idAdmin,
+        url: "http://129.151.122.81:8080/api/Admin/" + idAdmin,
         type: "PUT",
         data: dataToSend,
         contentType: "application/JSON",
@@ -931,7 +931,7 @@ function borrarInformacionAdministrador(idAdmin) {
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-        url: "http://localhost:8080/api/Admin/" + idAdmin,
+        url: "http://129.151.122.81:8080/api/Admin/" + idAdmin,
         type: "DELETE",
         data: dataToSend,
         contentType: "application/JSON",
