@@ -924,7 +924,7 @@ function borrarInformacionAdministrador(idAdmin) {
 //Reporte de estado de reservas
 function traerReporteStatus(){
     $.ajax({
-        url:"http://localhost:8080/api/Reservation/report-status",
+        url:"http://129.151.122.81:8080/api/Reservation/report-status",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
@@ -954,7 +954,7 @@ function traerReporteDate(){
     console.log(fechaInicio);
     console.log(fechaCierre);
     $.ajax({
-        url:"http://localhost:8080/api/Reservation/report-dates/"+fechaInicio+"/"+fechaCierre,
+        url:"http://129.151.122.81:8080/api/Reservation/report-dates/"+fechaInicio+"/"+fechaCierre,
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
@@ -982,7 +982,7 @@ function pintarRespuestaDate(respuesta){
 //Reporte de top clientes y número de reservas
 function traerReporteClientes(){
     $.ajax({
-        url:"http://localhost:8080/api/Reservation/report-clients",
+        url:"http://129.151.122.81:8080/api/Reservation/report-clients",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
