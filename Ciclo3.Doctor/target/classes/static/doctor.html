@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>Retos Ciclo 3 - Servicios Medicos Especializados</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--	    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet" 
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous">
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>-->
+        <script type="text/javascript" src="Acciones.js"></script>
+        <link rel="stylesheet" href="presentacion.css">
+    </head>
+
+    <body>
+        <h1>Specialized Medical Services</h1>
+
+        <!-- Campos para Especialidad -->
+        <h2> Specialties</h2>
+        <div>
+            <input type="hidden" id="EspecialidadesId" placeholder="id"><br>
+            <label for="EspecialidadesName">Name:</label>
+            <input type="text" id="EspecialidadesName" placeholder="name" requiered><br>
+            <label for="EspecialidadesDescription">Description:</label>
+            <input type="text" id="EspecialidadesDescription" placeholder="description"><br>
+        </div>
+        <button onclick="guardarInformacionEspecialidad()">Create Specialty</button>
+        <button onclick="extraerInformacionEspecialidades()">View/Edit Specialties</button>
+        <div id="resultadoEspecialidades"></div>
+
+        <!-- Campos para Doctor -->
+        <h2> Doctors</h2>
+        <div>
+            <input class="form-control m-3" style="width: 18em" type="hidden" id="DoctorId" placeholder="id"><br>
+            <label for="DoctorName">Name:</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="DoctorName" placeholder="name"><br>
+            <label for="DoctorDepartment">Department:</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="DoctorDepartment" placeholder="department"><br>
+            <label for="DoctorYear">Year:</label>
+            <input class="form-control m-3" style="width: 18em" type="number" id="DoctorYear" placeholder="year"><br>
+            <label for="DoctorDescription">Description:</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="DoctorDescription" placeholder="description"><br>
+            <label for="DoctorSpecialty">Specialty:</label>
+            <select id="DoctorSpecialty" style="width: 18.6em"><option disabled selected>select specialty</option></select>
+        </div>
+        <button class="btn btn-primary" onclick="guardarInformacionDoctor()">Create Doctor</button>
+        <button class="btn btn-primary" onclick="extraerInformacionDoctores()">View/Edit Doctors</button>
+        <div id="resultadoDoctores"></div>
+
+        <!-- Campos para Clientes -->
+        <h2> Clients</h2>
+        <div>
+            <input type="hidden" id="ClienteId" placeholder="id"><br>
+            <label for="MensajeCliente">Name:</label>
+            <input type="MensajeCliente" id="ClienteName" placeholder="name"><br>
+            <label for="ClienteEmail">Email:</label>
+            <input type="text" id="ClienteEmail" placeholder="email"><br>
+            <label for="ClienteAge">Age:</label>
+            <input type="number" id="ClienteAge" placeholder="age"><br>
+            <label for="ClientePassword">Password:</label>
+            <input type="password" id="ClientePassword" placeholder="password"><br>
+        </div>
+        <button onclick="guardarInformacionCliente()">Create Client</button>
+        <button onclick="extraerInformacionClientes()">View/Edit Clients</button>
+        <div id="resultadoClientes"></div>
+
+        <!-- Campos para Mensajes -->
+        <h2> Messages</h2>
+        <div>
+            <input type="hidden" id="MensajeId" placeholder="id"><br>
+            <label for="MensajeDoctor">Doctor:</label>
+            <select id="MensajeDoctor" style="width: 18.6em"><option disabled selected>select doctor</option></select><br>
+            <label for="MensajeCliente">Client:</label>
+            <select id="MensajeCliente" style="width: 18.6em"><option disabled selected>select client</option></select><br>
+            <textarea type="text" style="width: 18.6em" id="MensajeMessageText" placeholder="message text"></textarea><br>
+        </div>
+        <button onclick="guardarInformacionMensaje()">Save Message</button>
+        <button onclick="extraerInformacionMensajes()">View/Edit Messages</button>
+        <div id="resultadoMensajes"></div>
+
+        <!-- Campos para Reservas -->
+        <h2> Reservations</h2>
+        <div>
+            <input type="hidden" id="ReservaId" placeholder="id"><br>
+            <label for="ReservaDoctor">Doctor:</label>
+            <select id="ReservaDoctor" style="width: 18.6em"><option disabled selected>select doctor</option></select><br>
+            <label for="ReservaCliente">Client:</label>
+            <select id="ReservaCliente" style="width: 18.6em"><option disabled selected>select client</option></select><br>
+            <label for="ReservaStartDate">Star Date:</label>
+            <input type="date" id="ReservaStartDate" placeholder="start date" required"><br>
+            <label for="ReservaDevolutionDate">End Date:</label>
+            <input type="date" id="ReservaDevolutionDate" placeholder="devolution date" required><br>
+        </div>
+        <button onclick="guardarInformacionReserva()">Create Reservation</button>
+        <button onclick="extraerInformacionReservas()">View/Edit Reservations</button>
+        <div id="resultadoReservas"></div>
+
+        <!-- Campos para Administradores -->
+        <h2> Administradores</h2>
+        <div>
+            <input type="hidden" id="AdministradorId" placeholder="id"><br>
+            <label for="AdministradorName">Name:</label>
+            <input type="text" id="AdministradorName" placeholder="name"><br>
+            <label for="AdministradorEmail">Email:</label>
+            <input type="text" id="AdministradorEmail" placeholder="email"><br>
+            <label for="AdministradorPassword">Password:</label>
+            <input type="password" id="AdministradorPassword" placeholder="password"><br>
+        </div>
+        <button onclick="guardarInformacionAdministrador()">Create Admin User</button>
+        <button onclick="extraerInformacionAdministradores()">View/Edit Admin Users</button>
+        <div id="resultadoAdministradores"></div>
+
+    </body>
+
+</html>

@@ -13,7 +13,8 @@ h2 {
     color: blue;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;
-    padding-bottom: 0em;
+    margin-top:50px;
+    margin-bottom:0px;
 }
 
 table, td {

@@ -1,13 +1,11 @@
 package ciclo3.doctor.seguridad;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
 @RestController
 public class SecurityAdapter extends WebSecurityConfigurerAdapter {
 
@@ -19,7 +17,7 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
         ).exceptionHandling(e -> e
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-        ).oauth2Login().defaultSuccessUrl("/", true);
+        ).oauth2Login().defaultSuccessUrl("/doctor.html", true);
 
         http.cors().and().csrf().disable();
 

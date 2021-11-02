@@ -1,10 +1,10 @@
 package ciclo3.doctor.entidades;
+
 /**
  * Entidad o modelo que define la tabla Message y sus relaciones con las demás
- * entidades o tablas de la "base de datos" para el proyecto: 
- * Servicios médicos especializados.
- * Esta tabla relaciona las fechas de inicio y fin de las reservas y su estado.
- * La tabla se relaciona con las tablas doctor y cliente.
+ * entidades o tablas de la "base de datos" para el proyecto: Servicios médicos
+ * especializados. Esta tabla relaciona las fechas de inicio y fin de las
+ * reservas y su estado. La tabla se relaciona con las tablas doctor y cliente.
  */
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -21,8 +21,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
- * Define la entidad Reservaciones así como la tabla reservation en la base de datos y sus 
- * relaciones con las demás tablas del esquema.
+ * Define la entidad Reservaciones así como la tabla reservation en la base de
+ * datos y sus relaciones con las demás tablas del esquema.
+ *
  * @author William David Ramírez Blauvelt
  */
 @Entity
@@ -30,29 +31,30 @@ import javax.persistence.Temporal;
 public class Reservaciones implements Serializable {
 
     /**
-     * Campo de identificador único de registros en la tabla.
-     * Define el identificador único de los campos de la tabla e indica que es
+     * Campo de identificador único de registros en la tabla. Define el
+     * identificador único de los campos de la tabla e indica que es
      * autoincremental.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idReservation", length = 10, updatable = false)
     private Integer idReservation;
-    
+
     /**
      * Campo para la fecha de inicio de la reserva.
      */
-    
     @Column(name = "startDate", updatable = true)
     private Date startDate;
-    
+
     /**
      * Campo para la fecha de finalización de la reserva.
      */
-    
     @Column(name = "devolutionDate", updatable = true)
     private Date devolutionDate;
-    
+
+    @Column(name = "creationDate", updatable = true)
+    private Date creationDate = new Date();
+
     /**
      * Campo para marcar el estado de la reserva.
      */
@@ -60,8 +62,8 @@ public class Reservaciones implements Serializable {
     private String status = "created";
 
     /**
-     * Establece relación muchos a uno con el listado de doctores.
-     * Muchos reservas pueden soliciar el mismo doctor.
+     * Establece relación muchos a uno con el listado de doctores. Muchos
+     * reservas pueden soliciar el mismo doctor.
      */
     @ManyToOne
     @JoinColumn(name = "id")
@@ -69,8 +71,8 @@ public class Reservaciones implements Serializable {
     private Doctor doctor;
 
     /**
-     * Establece relación muchos a uno con el listado de clientes.
-     * Muchos reservas pueden ser hechas por el mismo doctor.
+     * Establece relación muchos a uno con el listado de clientes. Muchos
+     * reservas pueden ser hechas por el mismo doctor.
      */
     @ManyToOne
     @JoinColumn(name = "idClient")
@@ -105,6 +107,14 @@ public class Reservaciones implements Serializable {
 
     public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getStatus() {
