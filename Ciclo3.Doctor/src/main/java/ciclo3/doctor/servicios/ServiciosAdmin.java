@@ -60,6 +60,9 @@ public class ServiciosAdmin {
                 if (admin.getName() != null) {
                     adm.get().setName(admin.getName());
                 }
+                if (admin.getEmail() != null) {
+                    adm.get().setEmail(admin.getEmail());
+                }
                 if (admin.getPassword() != null) {
                     adm.get().setPassword(admin.getPassword());
                 }

@@ -58,6 +58,9 @@ function pintarRespuestaEspecialidades(respuestaEspecialidades) {
 }
 
 //Guarda una nueva especialidad en la base de datos
+
+
+    
 function guardarInformacionEspecialidad() {
     let especialidad = {
         name: $("#EspecialidadesName").val(),
@@ -196,27 +199,27 @@ function extraerInformacionDoctores() {
         url: "http://129.151.122.81:8080/api/Doctor/all",
         type: "GET",
         datatype: "JSON",
-        success: function (respuestaDoctor) {
-            console.log(respuestaDoctor);
-            pintarRespuestaDoctores(respuestaDoctor);
+        success: function (respuestaDoctores) {
+            console.log(respuestaDoctores);
+            pintarRespuestaDoctores(respuestaDoctores);
         },
     });
 }
 
 //Presenta lista o tabla de doctores
-function pintarRespuestaDoctores(respuestaDoctor) {
+function pintarRespuestaDoctores(respuestaDoctores) {
     let tablaDoctores = "<table> <tr> <th>Id</th> <th>Name</th> <th>Department</th> <th>Year</th> <th>Description</th> <th>Specialty</th> </tr>";
-    for (i = 0; i < respuestaDoctor.length; i++) {
+    for (i = 0; i < respuestaDoctores.length; i++) {
         tablaDoctores += "<tr>";
-        tablaDoctores += "<td>" + respuestaDoctor[i].id + "</td>";
-        tablaDoctores += "<td>" + respuestaDoctor[i].name + "</td>";
-        tablaDoctores += "<td>" + respuestaDoctor[i].department + "</td>";
-        tablaDoctores += "<td>" + respuestaDoctor[i].year + "</td>";
-        tablaDoctores += "<td>" + respuestaDoctor[i].description + "</td>";
-        tablaDoctores += "<td>" + respuestaDoctor[i].specialty.name + "</td>";
-        tablaDoctores += "<td> <button onclick = 'borrarInformacionDoctor(" + respuestaDoctor[i].id + ")'>Delete</button>";
-        tablaDoctores += "<td> <button onclick = 'actualizarInformacionDoctor(" + respuestaDoctor[i].id + ")'>Update</button>";
-        //tablaDoctores += "<td> <button onclick = 'cargarInformacionDoctor(" + respuestaDoctor[i].id + ")'>Edit</button>";
+        tablaDoctores += "<td>" + respuestaDoctores[i].id + "</td>";
+        tablaDoctores += "<td>" + respuestaDoctores[i].name + "</td>";
+        tablaDoctores += "<td>" + respuestaDoctores[i].department + "</td>";
+        tablaDoctores += "<td>" + respuestaDoctores[i].year + "</td>";
+        tablaDoctores += "<td>" + respuestaDoctores[i].description + "</td>";
+        tablaDoctores += "<td>" + respuestaDoctores[i].specialty.name + "</td>";
+        tablaDoctores += "<td> <button onclick = 'borrarInformacionDoctor(" + respuestaDoctores[i].id + ")'>Delete</button>";
+        tablaDoctores += "<td> <button onclick = 'actualizarInformacionDoctor(" + respuestaDoctores[i].id + ")'>Update</button>";
+        //tablaDoctores += "<td> <button onclick = 'cargarInformacionDoctor(" + respuestaDoctores[i].id + ")'>Edit</button>";
         tablaDoctores += "</tr>";
     }
     tablaDoctores += "</table>";
@@ -929,12 +932,12 @@ function traerReporteStatus(){
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            pintarRespuesta(respuesta);
+            pintarReporteRespuestaStatus(respuesta);
         }
     });
 }
 
-function pintarRespuesta(respuesta){
+function pintarReporteRespuestaStatus(respuesta){
 
     let myTable="<table>";
     myTable+="<tr>";
@@ -944,7 +947,7 @@ function pintarRespuesta(respuesta){
         myTable+="<td>"+respuesta.cancelled+"</td>";
         myTable+="</tr>";
     myTable+="</table>";
-    $("#resultadoStatus").html(myTable);
+    $("#resultadoReporteStatus").html(myTable);
 }
 
 //Reporte de reservas entre rango de fechas
@@ -959,12 +962,12 @@ function traerReporteDate(){
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            pintarRespuestaDate(respuesta);
+            pintarRespuestaReporteDate(respuesta);
         }
     });
 }
 
-function pintarRespuestaDate(respuesta){
+function pintarRespuestaReporteDate(respuesta){
     let myTable="<table>";
     myTable+="<tr>";
     for(i=0;i<respuesta.length;i++){
@@ -975,7 +978,7 @@ function pintarRespuestaDate(respuesta){
         myTable+="</tr>";
     }
     myTable+="</table>";
-    $("#resultadoDate").html(myTable);
+    $("#resultadoReporteDate").html(myTable);
 }
 
 
@@ -987,12 +990,12 @@ function traerReporteClientes(){
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            pintarRespuestaClientes(respuesta);
+            pintarRespuestaReporteClientes(respuesta);
         }
     });
 }
 
-function pintarRespuestaClientes(respuesta){
+function pintarRespuestaReporteClientes(respuesta){
 
     let myTable="<table>";
     myTable+="<tr>";
@@ -1005,6 +1008,6 @@ function pintarRespuestaClientes(respuesta){
         myTable+="</tr>";
     }
     myTable+="</table>";
-    $("#resultadoClientes").html(myTable);
+    $("#resultadoReporteClientes").html(myTable);
 }
 
