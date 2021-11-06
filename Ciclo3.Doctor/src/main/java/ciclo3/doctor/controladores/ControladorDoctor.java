@@ -42,6 +42,7 @@ public class ControladorDoctor {
         return servicio.save(doctor);
     }
 
+    ///RETO 4
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Doctor update(@RequestBody Doctor doctor) {

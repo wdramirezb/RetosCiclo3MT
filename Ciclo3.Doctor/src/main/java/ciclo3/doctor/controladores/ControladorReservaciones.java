@@ -44,6 +44,7 @@ public class ControladorReservaciones {
         return servicio.save(reservation);
     }
 
+    ///RETO 4
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservaciones update(@RequestBody Reservaciones reservation) {

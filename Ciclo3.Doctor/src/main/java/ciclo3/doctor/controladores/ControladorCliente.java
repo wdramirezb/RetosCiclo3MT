@@ -42,6 +42,7 @@ public class ControladorCliente {
         return servicio.save(client);
     }
 
+    ///RETO 4
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente update(@RequestBody Cliente client) {

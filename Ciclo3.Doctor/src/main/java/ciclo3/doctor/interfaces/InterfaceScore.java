@@ -1,5 +1,8 @@
 package ciclo3.doctor.interfaces;
 
-public interface InterfaceScore {
-    
+import ciclo3.doctor.entidades.Score;
+import org.springframework.data.repository.CrudRepository;
+
+public interface InterfaceScore extends CrudRepository<Score, Integer> {
+
 }

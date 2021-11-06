@@ -42,6 +42,7 @@ public class ControladorEspecialidad {
         return servicio.save(cspecialidad);
     }
 
+    ///RETO 4
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Especialidad update(@RequestBody Especialidad cspecialidad) {

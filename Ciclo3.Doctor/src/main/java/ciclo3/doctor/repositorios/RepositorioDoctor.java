@@ -25,6 +25,7 @@ public class RepositorioDoctor {
         return crud.save(doctor);
     }
 
+    ///RETO 4
     public void delete(Doctor doctor) {
         crud.delete(doctor);
     }

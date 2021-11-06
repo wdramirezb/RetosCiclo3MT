@@ -42,6 +42,7 @@ public class ControladorAdmin {
         return servicio.save(admin);
     }
 
+    ///RETO 4
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Admin update(@RequestBody Admin admin) {

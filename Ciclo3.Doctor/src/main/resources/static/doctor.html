@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +21,10 @@
         <link rel="stylesheet" href="presentacion.css">
     </head>
 
+
     <body>
         <h1>Specialized Medical Services</h1>
+
 
         <!-- Campos para Especialidad -->
         <h2> Specialties</h2>
@@ -36,6 +39,7 @@
         <button class="bacciones" onclick="extraerInformacionEspecialidades()">View/Edit Specialties</button>
         <div id="resultadoEspecialidades"></div>
 
+
         <!-- Campos para Doctor -->
         <h2> Doctors</h2>
         <div>
@@ -45,15 +49,16 @@
             <label for="DoctorDepartment">Department:</label>
             <input class="form-control m-3" style="width: 18em" type="text" id="DoctorDepartment" placeholder="department"><br>
             <label for="DoctorYear">Year:</label>
-            <input class="form-control m-3" style="width: 18em" type="number" id="DoctorYear" placeholder="year"><br>
+            <input class="form-control m-3" style="width: 18em" type="number" id="DoctorYear" placeholder="year" min="1979" max="2021"><br>
             <label for="DoctorDescription">Description:</label>
             <input class="form-control m-3" style="width: 18em" type="text" id="DoctorDescription" placeholder="description"><br>
             <label for="DoctorSpecialty">Specialty:</label>
-            <select id="DoctorSpecialty" style="width: 18.6em"><option disabled selected>select specialty</option></select>
+            <select id="DoctorSpecialty" style="width: 18.6em"><option disabled selected placeholder="select specialty">select specialty</option></select>
         </div>
         <button class="bacciones" onclick="guardarInformacionDoctor()">Create Doctor</button>
         <button class="bacciones" onclick="extraerInformacionDoctores()">View/Edit Doctors</button>
         <div id="resultadoDoctores"></div>
+
 
         <!-- Campos para Clientes -->
         <h2> Clients</h2>
@@ -72,6 +77,7 @@
         <button class="bacciones" onclick="extraerInformacionClientes()">View/Edit Clients</button>
         <div id="resultadoClientes"></div>
 
+
         <!-- Campos para Mensajes -->
         <h2> Messages</h2>
         <div>
@@ -80,11 +86,13 @@
             <select id="MensajeDoctor" style="width: 18.6em"><option disabled selected>select doctor</option></select><br>
             <label for="MensajeCliente">Client:</label>
             <select id="MensajeCliente" style="width: 18.6em"><option disabled selected>select client</option></select><br>
+            <label for="MensajeMessageText">Message:</label><br>
             <textarea type="text" style="width: 18.6em" id="MensajeMessageText" placeholder="message text"></textarea><br>
         </div>
         <button class="bacciones" onclick="guardarInformacionMensaje()">Save Message</button>
         <button class="bacciones" onclick="extraerInformacionMensajes()">View/Edit Messages</button>
         <div id="resultadoMensajes"></div>
+
 
         <!-- Campos para Reservas -->
         <h2> Reservations</h2>
@@ -98,13 +106,44 @@
             <input type="date" id="ReservaStartDate" placeholder="start date" required"><br>
             <label for="ReservaDevolutionDate">End Date:</label>
             <input type="date" id="ReservaDevolutionDate" placeholder="devolution date" required><br>
+            <label for="ReservaEstado">Estado:</label>
+            <select id="ReservaEstado" style="width: 18.6em">select status<option disabled selected>
+                <option>created</option>
+                <option>completed</option>
+                <option>cancelled</option>
+            </select>
         </div>
         <button class="bacciones" onclick="guardarInformacionReserva()">Create Reservation</button>
         <button class="bacciones" onclick="extraerInformacionReservas()">View/Edit Reservations</button>
         <div id="resultadoReservas"></div>
 
+
+        <!-- Campos para Calificaciones -->
+        <h2> Scores</h2>
+        <div>
+            <input type="hidden" id="ScoreId" placeholder="id"><br>
+            <label for="ScoreReserva">Reservation:</label>
+            <select id="ScoreReserva" style="width: 18.6em"><option disabled selected>select reservation</option></select><br>
+            <label for="ScoreStars">Score:</label>
+            <select id="ScoreStars" style="width: 18.6em">
+                <option disabled selected>Select score</option>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select><br>
+            <label for="ScoreMensaje">Message:</label><br>
+            <textarea type="text" style="width: 18.6em" id="ScoreMensaje" placeholder="message text"></textarea><br>
+        </div>
+        <button class="bacciones" onclick="guardarInformacionScore()">Create Score</button>
+        <button class="bacciones" onclick="extraerInformacionScore()">View/Edit Score</button>
+        <div id="resultadoScores"></div>
+
+
         <!-- Campos para Administradores -->
-        <h2> Administradores</h2>
+        <h2> Administrators</h2>
         <div>
             <input type="hidden" id="AdministradorId" placeholder="id"><br>
             <label for="AdministradorName">Name:</label>
@@ -119,8 +158,11 @@
         <div id="resultadoAdministradores"></div>
 
 
-        <!-- Bloque de Reportes -->
+
+        <!-- //////////////////////////////////// -->
+        <!-- /////////BLOQUE DE REPORTES///////// -->
         <h2> Generate Reports</h2>
+
 
         <!-- Generate Reporte Estado Reservas -->
         <button class="breportes" onclick="traerReporteStatus()"> Reserves Status Report </button>
@@ -133,13 +175,14 @@
         <input type="date" id="RstarDate" placeholder="descripcion"><br>
         <label for="RdevolutionDate">Devolution Date:</label>
         <input type="date" id="RdevolutionDate" placeholder="descripcion">
-        
         <div id="resultadoReporteDate"></div><br>
 
         <!-- Generar Reporte Clientes y Cantidad de reservas por cliente -->
         <button class="breportes" onclick="traerReporteClientes()"> Top Clients Report </button>
         <div id="resultadoReporteClientes"></div><br>
 
+
     </body>
+
 
 </html>

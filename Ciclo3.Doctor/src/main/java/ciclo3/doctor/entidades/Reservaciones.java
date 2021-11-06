@@ -6,10 +6,10 @@ package ciclo3.doctor.entidades;
  * especializados. Esta tabla relaciona las fechas de inicio y fin de las
  * reservas y su estado. La tabla se relaciona con las tablas doctor y cliente.
  */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -52,14 +53,14 @@ public class Reservaciones implements Serializable {
     @Column(name = "devolutionDate", updatable = true)
     private Date devolutionDate;
 
-    @Column(name = "creationDate", updatable = true)
+    @Column(name = "creationDate", updatable = false)
     private Date creationDate = new Date();
 
     /**
      * Campo para marcar el estado de la reserva.
      */
     @Column(name = "status", length = 10, updatable = true)
-    private String status = "created";
+    private String status;
 
     /**
      * Establece relación muchos a uno con el listado de doctores. Muchos
@@ -79,11 +80,9 @@ public class Reservaciones implements Serializable {
     @JsonIgnoreProperties({"reservations", "messages"})
     private Cliente client;
 
-    /**
-     * Campo para marcar la calificación de la reserva.
-     */
-    @Column(name = "score", length = 10, updatable = true)
-    private String score; //depende el grupo
+    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy = "reservation")
+    @JsonIgnoreProperties("reservation")
+    private Score score;
 
     public Integer getIdReservation() {
         return idReservation;
@@ -141,11 +140,11 @@ public class Reservaciones implements Serializable {
         this.client = client;
     }
 
-    public String getScore() {
+    public Score getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Score score) {
         this.score = score;
     }
 
